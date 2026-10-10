@@ -1,0 +1,13 @@
+query ListTodos($status: TodoStatus, $page: Int, $pageSize: Int) {
+  todos(status: $status, page: $page, pageSize: $pageSize) {
+    items {
+      id
+      title
+      description
+      status
+    }
+    total
+    page
+    pageSize
+  }
+}
