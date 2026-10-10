@@ -1,8 +1,9 @@
 import { useTodos } from '../model/useTodos';
+import { PaginationControls } from './PaginationControls';
 import { TodoCard } from './TodoCard';
 
 export function TodosPage() {
-  const { todos, loading, error } = useTodos();
+  const { todos, loading, error, page, totalPages, setPage } = useTodos();
 
   return (
     <main className='mx-auto flex max-w-2xl flex-col gap-6 p-6'>
@@ -16,6 +17,7 @@ export function TodosPage() {
           </li>
         ))}
       </ul>
+      <PaginationControls page={page} totalPages={totalPages} onPageChange={setPage} />
     </main>
   );
 }
