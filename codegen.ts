@@ -15,7 +15,8 @@ const config: CodegenConfig = {
         extension: '.generated.ts',
         baseTypesPath: 'shared/api/graphql/schema.generated.ts',
       },
-      plugins: ['typescript-operations', 'typed-document-node'],
+      // operations without schema types (e.g. DeleteTodo) leave the Types import unused
+      plugins: [{ add: { content: '// @ts-nocheck' } }, 'typescript-operations', 'typed-document-node'],
       config: { useTypeImports: true },
     },
   },
