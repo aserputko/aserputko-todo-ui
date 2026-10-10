@@ -28,13 +28,13 @@ function getPageItems(page: number, totalPages: number): PageItem[] {
   return items;
 }
 
-interface PaginationControlsProps {
+interface TodosPaginationProps {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
 
-export function PaginationControls({ page, totalPages, onPageChange }: PaginationControlsProps) {
+export function TodosPagination({ page, totalPages, onPageChange }: TodosPaginationProps) {
   if (totalPages <= 1) return null;
 
   const goTo = (target: number) => (event: MouseEvent) => {
