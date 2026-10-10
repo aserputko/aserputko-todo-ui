@@ -4,6 +4,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Trash2 } from 'lucide-react';
 import type { ListTodosQuery } from '../api/ListTodos.generated';
 import { useDeleteTodo } from '../model/useDeleteTodo';
+import { EditTodoDialog } from './EditTodoDialog';
 
 type Todo = ListTodosQuery['todos']['items'][number];
 
@@ -21,12 +22,13 @@ export function TodoCard({ todo }: { todo: Todo }) {
   const { deleteTodo, loading, error } = useDeleteTodo();
 
   return (
-    <Card>
+    <Card key={todo.id}>
       <CardHeader>
         <div className='flex items-start justify-between gap-4'>
           <CardTitle>{todo.title}</CardTitle>
           <div className='flex items-center gap-2'>
             <Badge variant={variant}>{label}</Badge>
+            <EditTodoDialog todo={todo} />
             <Button
               variant='ghost'
               size='icon-sm'
